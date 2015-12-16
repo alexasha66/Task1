@@ -9,20 +9,26 @@
 
 # Вычислить и вывести на экран итоговую сумму всех покупок в "корзине".
 
-item_name =""
-hash_doc={}
-sum=0.to_f
+# encode UTF-8
 
+	item_name = ""
+	hash_doc = {}
+	
+	cost = 0.to_f
+ 	quantity = 0.to_f
+ 	sum = 0.to_f
+	totalsum = 0.to_f
+ 
 while true 
 
-print "\n Введите название товара ('stop'-окончание ввода): "
-item_name = gets.to_s.chop
+print "\n Введите название товара ('стоп'-окончание ввода): "
+item_name = gets.chop
 
-# выходим, если услышим пароль (по русски стоп - нипонимать ...?)
-break if item_name =="stop"
+# выходим, если услышим пароль (по русски стоп )
+break if item_name == "стоп"
 
 # Обнуляем хеш по товару
-hash_item={}
+hash_item = {}
 
 # вводим данные
 print "\n Введите цену за единицу : "
@@ -42,10 +48,8 @@ if (item_quantity = gets.to_f).zero?
 end
 
 # Формируем вложенный хеш
-hash_item[item_price]=item_quantity
+hash_doc[item_name] = { price: item_price, quantity: item_quantity }
 
-# Формируем внешний хеш
-hash_doc[item_name] = hash_item
 
 # Очищаем экран
 system "clear"
@@ -57,12 +61,19 @@ end
 
 print "\n --------------- : "
 
- hash_doc.each { |i_name, i_val| 
- 	puts "\n стоимость  #{i_name} составляет #{(i_val.keys[0] * i_val.values[0]).round(2)} (цена: #{i_val.keys[0]} , количество - #{i_val.values[0]})"
- 	sum+=(i_val.keys[0] * i_val.values[0])
- 	 }
+ hash_doc.each do |i_name, i_val| 
+ 	
+ 	cost = i_val.keys[0]
+ 	quantity = i_val.values[0]
+ 	sum = cost * quantity
+ 	
+ 	puts "\n стоимость  #{i_name} составляет #{sum.round(2)} (цена: #{cost} , количество - #{quantity})"
+
+ 	totalsum += sum
+
+ end
 
 print "\n --------------- : "
-print "\n Итого по накладной: #{sum.round(2)}"
+print "\n Итого по накладной: #{totalsum.round(2)}"
 
 

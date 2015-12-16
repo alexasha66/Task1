@@ -2,26 +2,10 @@
 # В цикле выводить те месяцы, у которых количество дней ровно 30
 
 
-require 'date'
+hash_month = {January: 31, February: 28, March: 31, April: 30, May: 31, June: 30, July: 31, August: 31, September: 30, October: 31, November: 30, December: 31}
 
-def days_in_month(year, month)
-  Date.new(year, month, -1).day
-end
+puts "Месяцы, в которых количество дней равно 30:"
+puts "-------------------------------------------"
 
-
-months =  Date::MONTHNAMES[1..-1]
-
-days_sel=30
-
-hash_month={}
-
-months.each_index { |month_number|
-
-days =days_in_month(Time.now.year, month_number+1)
-puts months[month_number] if days == days_sel 
-hash_month[months[month_number]] =  days
-
-}                
-
-puts hash_month
+hash_month.select { |key,val| val == 30 }.each do |month, days| puts "#{month}" end
 
