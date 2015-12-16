@@ -21,16 +21,16 @@ end
 sides = []
 
 print "\n Введите сторону (a) треугольника: "
-a = gets       
-sides.push(a.to_f)
+a = gets.to_f       
+sides << a
 
 print "\n Введите сторону (b) треугольника: "
-b = gets       
-sides.push(b.to_f)
+b = gets.to_f       
+sides << b
 
 print "\n Введите сторону (c) треугольника: "
-c = gets       
-sides.push(c.to_f)
+c = gets.to_f       
+sides << c
 puts "\n--------------\n"
 
 

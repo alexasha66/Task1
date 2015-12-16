@@ -5,12 +5,12 @@
 # Если идеальный вес получается отрицательным, то выводится строка "Ваш вес уже оптимальный"
 
 print "\nВведите ваше имя: "
-name_person = gets       
+name_person = gets.to_i       
 
 print "\nВведите ваш рост: "
-growth_person = gets
+growth_person = gets.to_s
 
-weight = growth_person.to_i - 110
+weight = growth_person - 110
 
 
 print "\n #{name_person}, Ваш " + (weight >=0 ? "идеальный вес - #{weight} кг " : "вес уже оптимальный")

@@ -17,7 +17,7 @@ end
 
 def root (a,b,d=0,z)
 # Вычисляем корень уравнения по формуле
-# x = ((+-)D**0.5 -b )/ 2*a
+# x = ((+-)D**(1/2) -b )/ 2*a
 # где D = b**2 - 4ac
 	(z*Math.sqrt(d)-b) / (2.*a)
 
@@ -27,16 +27,16 @@ end
 
 
 print "\n Введите коэффициент a: "
-a = gets.to_f
+a = gets
 
 print "\n Введите коэффициент b: "
-b = gets.to_f       
+b = gets       
 
 print "\n Введите коэффициент c: "
-c = gets.to_f       
+c = gets       
 puts "\n--------------\n"
 
-d = discrim(a, b, c)
+d = discrim(a.to_f, b.to_f, c.to_f)
 
 print "Уравнение #{a}x**2 + #{b}x + #{c}, имеет дискриминант = #{d}"
 
