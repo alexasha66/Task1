@@ -1,6 +1,12 @@
 # Заданы три числа, которые обозначают число, месяц, год (запрашиваем у пользователя).
 # Найти порядковый номер даты, начиная отсчет с начала года. Учесть, что год может быть високосным
 
+def leap_year(year)
+((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0)
+
+end
+
+
 def days_in_year(year, month, day)
 # Считаем количество дней через хеш {номер_месяца: кол_дней, ...}
 
@@ -11,6 +17,9 @@ hash_month = { 1 => 31, 2 => 28, 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 
 hash_month.select { |key,val| key < month  }.each do |mon, mon_days| all_days += mon_days end
 
 all_days += day
+
+# Учитываем високосный ли год
+all_days += 1 if (leap_year(year) && month > 3)
 
 rescue  =>  err
 	puts err.class

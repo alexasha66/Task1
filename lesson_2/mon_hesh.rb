@@ -7,5 +7,5 @@ hash_month = {January: 31, February: 28, March: 31, April: 30, May: 31, June: 30
 puts "Месяцы, в которых количество дней равно 30:"
 puts "-------------------------------------------"
 
-hash_month.select { |key,val| val == 30 }.each do |month, days| puts "#{month}" end
+hash_month.each do |month, days| puts "#{month}" if days == 30   end
 
