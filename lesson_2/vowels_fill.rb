@@ -8,8 +8,12 @@ alfabet = ('a'..'z').to_a
 
 hash_vowels = {}
 
-alfabet.each_with_index do |char,index|  hash_vowels[char] =  index if vowels.include? char  end
+alfabet.each_with_index do |char, index|
+
+  hash_vowels[char] = index if vowels.include? char
+
+end
 
 
 puts "\n -------------------------"
-puts    hash_vowels            
+puts hash_vowels

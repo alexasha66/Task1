@@ -10,61 +10,62 @@
 
 # Вычислить и вывести на экран итоговую сумму всех покупок в "корзине".
 
-	hash_doc = {}
-	
-	totalsum = 0
 
-while true 
+hash_doc = {}
 
-print "\n Введите название товара ('стоп'-окончание ввода): "
-item_name = gets.chop
+while true
 
-# выходим, если услышим пароль (по русски стоп)
-break if item_name == "стоп"
+  print "\n Введите название товара ('stop'-окончание ввода): "
+  item_name = gets.chop
+
+# выходим, если услышим пароль (по русски стоп - нипонимать ...?)
+  break if item_name == "стоп"
 
 # вводим данные
-print "\n Введите цену за единицу : "
-       
-if (item_price = gets.to_f).zero?
-	system "clear"
-	puts "Цена не может быть нулевой!" 
-	next
-end
+  print "\n Введите цену за единицу : "
 
-print "\n Введите количество товара : "
+  if (item_price = gets.to_f).zero?
+    system "clear"
+    puts "Цена не может быть нулевой!"
+    next
+  end
 
-if (item_quantity = gets.to_f).zero?
-	system "clear"
-	puts "Количество не может быть нулевым!" 
-	next
-end
+  print "\n Введите количество товара : "
+
+  if (item_quantity = gets.to_f).zero?
+    system "clear"
+    puts "Количество не может быть нулевым!"
+    next
+  end
 
 # Формируем вложенный хеш
-hash_doc[item_name] = { price: item_price, quantity: item_quantity }
-
+  hash_doc[item_name] = {price: item_price, quantity: item_quantity}
 
 # Очищаем экран
-system "clear"
-print "\n --------------- : "
-print "\n Следующий товар : "
-print "\n --------------- : "
+  system "clear"
+  print "\n --------------- : "
+  print "\n Следующий товар : "
+  print "\n --------------- : "
 
 end
 
 print "\n --------------- : "
 
- hash_doc.each do |i_name, i_val| 
- 	
- 	cost = i_val.values[0]
- 	quantity = i_val.values[1]
- 	
- 	sum = cost * quantity
- 	
- 	puts "\n стоимость  #{i_name} составляет #{sum.round(2)} (цена: #{cost} , количество - #{quantity})"
+totalsum = 0
 
- 	totalsum += sum
+hash_doc.each do |item_name, item_detail|
 
- end
+  price = item_detail[:price]
+
+  quantity = item_detail[:quantity]
+
+  sum = price * quantity
+
+  puts "\n стоимость  #{item_name} составляет #{sum.round(2)} (цена: #{price} , количество - #{quantity})"
+
+  totalsum += sum
+
+end
 
 print "\n --------------- : "
 print "\n Итого по накладной: #{totalsum.round(2)}"
