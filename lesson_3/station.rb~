@@ -30,9 +30,7 @@ class RailwayStation
 
   def show_train_list (type = "")
     puts "Список поездов #{type} на станции '#{name}':"
-    @train_list.each_with_index do |train, number|
-      puts "#{number+1}. Пооезд '#{train.name}'" if train.type.to_s == type.to_s || type.to_s == ""
-    end
+    @train_list.each_with_index { |train, number| puts "#{number+1}. Пооезд '#{train.name}'" if train.type.to_s == type.to_s || type.to_s == "" }
   end
 
   def train_count (type = "")

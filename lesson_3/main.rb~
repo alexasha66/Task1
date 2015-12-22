@@ -3,7 +3,7 @@ require_relative 'route'
 require_relative 'station'
 
 
-# Инициализируем объекты для маршрутов (пока один, пустой)
+# Инициализируем объекты для маршрутов (пока один пустой)
 station_list = []
 
 
@@ -75,33 +75,53 @@ station_1.show_train_count(Train::TYPE[1])
 
 # Для маршрута  задаем список остановок (станций)
 
-route_1.station_list = station_list
-route_1.show_station_list
+route_1.point_list = station_list
+route_1.show_point_list
 # Для поезда train1 задаем маршрут
 train1.change_route route_1
 # Для маршрута поезда train1 добавляем новыю стацию 
-train1.route.add_station station_3
-train1.route.show_station_list
-train1.route.show_next_station
-train1.route.show_previos_station
+train1.route.add_point station_3
+
+train1.show_route
+train1.show_next_station
+train1.show_previos_station
 
 train1.detach_carriage
 train1.attach_carriage
 train1.attach_carriage
 train1.show_quantity_carriage
-station_1.move_train_next_station(train1)
+
+# Станция отправляет поезд
+station_1.send_train train1
+
+#  поезд отправляется
+train1.move_to_station station_4
+train1.move_next_station
+
 train1.speed_up 5
 train1.speed_up 15
 train1.speed_up 30
 train1.speed_up 70
+train1.detach_carriage
+train1.attach_carriage
 
 train1.speed_down 30
 train1.speed_down 30
+train1.speed_down 50
 train1.speed_down 10
-train1.route.show_current_station
-train1.route.show_next_station
+
+train1.show_current_station
+train1.show_next_station
+train1.show_previos_station
+
 # Едем дальше
-station_1.move_train_next_station(train1)
+
+# Станция отправляет поезд
+station_1.send_train train1
+
+#  поезд отправляется
+train1.move_next_station
+
 train1.speed_up 15
 train1.speed_up 55
 train1.speed_up 30
@@ -109,8 +129,11 @@ train1.speed_up 60
 
 train1.speed_down 30
 train1.speed_down 80
-train1.speed_down 70
 train1.speed_down 30
-train1.route.show_current_station
-train1.route.show_next_station
+train1.speed_down 20
+
+train1.show_current_station
+train1.show_next_station
+train1.show_previos_station
+
 # Приехали
